@@ -1,0 +1,85 @@
+---
+interface Skill {
+  name: string;
+  context: string;
+}
+
+const skills: Skill[] = [
+  {
+    name: 'Python (pandas, scikit-learn, PyTorch)',
+    context: 'Daily driver on placement and throughout my degree',
+  },
+  {
+    name: 'SQL',
+    context: 'Joins, aggregates, subqueries; used commercially at Tillo',
+  },
+  {
+    name: 'APIs & data collection (requests)',
+    context: 'API clients for job postings (Adzuna) and social posts (Bluesky)',
+  },
+  {
+    name: 'NLP & LLM tooling (NLTK, Hugging Face Transformers)',
+    context: 'Sentiment analysis; fine-tuning and evaluating language models',
+  },
+  {
+    name: 'Power BI',
+    context: 'Building dashboards on real datasets',
+  },
+  {
+    name: 'Git & GitHub, Linux, MySQL, R, Gradio',
+    context: 'Supporting toolkit',
+  },
+];
+---
+
+<section id="skills" class="wrap">
+  <div class="section-head">
+    <span class="index" aria-hidden="true">03</span>
+    <h2>Skills</h2>
+  </div>
+
+  <dl>
+    {
+      skills.map((skill) => (
+        <div class="row">
+          <dt>{skill.name}</dt>
+          <dd class="mono">{skill.context}</dd>
+        </div>
+      ))
+    }
+  </dl>
+</section>
+
+<style>
+  dl {
+    margin: 0;
+  }
+
+  .row {
+    display: grid;
+    gap: 0.2rem;
+    padding-block: 1.1rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .row:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  @media (min-width: 768px) {
+    .row {
+      grid-template-columns: minmax(0, 22rem) 1fr;
+      gap: 1.5rem;
+      align-items: baseline;
+    }
+  }
+
+  dt {
+    font-weight: 500;
+  }
+
+  dd {
+    margin: 0;
+  }
+</style>

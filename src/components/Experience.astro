@@ -1,0 +1,104 @@
+---
+interface Entry {
+  date: string;
+  role: string;
+  org: string;
+  detail: string;
+}
+
+const entries: Entry[] = [
+  {
+    date: 'May 2026',
+    role: 'Data & BI Work Experience',
+    org: 'Boots UK, Nottingham',
+    detail:
+      'Shadowed a data analyst using Power BI to track chilled food sales and target stock distribution across stores; saw how commercial data feeds product and supply decisions at a major UK retailer.',
+  },
+  {
+    date: 'Nov 2025',
+    role: 'Data & Engineering Placement',
+    org: 'Tillo, Hove',
+    detail:
+      'Worked daily with the data engineering team in Python and SQL alongside cloud analytics and database tooling. Delivered a machine learning project on internal data from initial brief to a finished, documented model presented to the team. Contributed to standups, retros and sprint planning in an Agile environment.',
+  },
+  {
+    date: '2024 – 2025',
+    role: 'Customer Team Member',
+    org: 'Co-op, Nottingham',
+    detail:
+      'Increased average weekly membership signups by 25% through targeted customer engagement; helped cut high-value stock wastage by ~30% in two months.',
+  },
+  {
+    date: '2023 – 2026',
+    role: 'BSc (Hons) Computer Science with AI',
+    org: 'University of Lincoln',
+    detail:
+      'Predicted First Class Honours. Dissertation: the Airbnb Price Predictor in the projects above.',
+  },
+];
+---
+
+<section id="experience" class="wrap">
+  <div class="section-head">
+    <span class="index" aria-hidden="true">02</span>
+    <h2>Experience</h2>
+  </div>
+
+  <ol class="timeline" role="list">
+    {
+      entries.map((entry) => (
+        <li>
+          <p class="mono date">{entry.date}</p>
+          <div>
+            <h3>{entry.role}</h3>
+            <p class="mono org">{entry.org}</p>
+            <p class="detail">{entry.detail}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .timeline {
+    list-style: none;
+    padding: 0;
+  }
+
+  .timeline li {
+    display: grid;
+    gap: 0.35rem;
+    padding-block: 1.75rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .timeline li:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  @media (min-width: 768px) {
+    .timeline li {
+      grid-template-columns: 9rem 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  .date {
+    padding-top: 0.3rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  .org {
+    margin-top: 0.2rem;
+    color: var(--accent);
+  }
+
+  .detail {
+    margin-top: 0.6rem;
+  }
+</style>

@@ -1,0 +1,133 @@
+---
+interface Link {
+  href: string;
+  label: string;
+  primary?: boolean;
+}
+
+interface Project {
+  slug: string;
+  title: string;
+  status?: string;
+  plain: string;
+  technical: string;
+  links: Link[];
+}
+
+const projects: Project[] = [
+  {
+    slug: '~/projects/job-market-pipeline',
+    title: 'Job Market Pipeline',
+    status: 'In progress',
+    plain:
+      'An automated pipeline that collects live job postings, cleans and structures the data, and loads it into a database. That means questions like “which skills are most in demand for data roles?” can be answered with fresh data instead of guesswork.',
+    technical: 'Python · SQL · Adzuna API · extract → transform → load',
+    links: [{ href: 'https://github.com/Mozochi/job-market-pipeline', label: 'GitHub' }],
+  },
+  {
+    slug: '~/projects/airbnb-price-predictor',
+    title: 'Airbnb Price Predictor',
+    status: 'Dissertation',
+    plain:
+      'A machine learning model that predicts the nightly price of an Airbnb listing from its features. Built end to end: data cleaning, feature engineering, model selection, and evaluation.',
+    technical: 'Python · pandas · scikit-learn',
+    links: [
+      { href: 'https://eu-airbnb-price-predictor.streamlit.app/', label: 'Try it live', primary: true },
+      { href: 'https://github.com/Mozochi/airbnb-price-predictor', label: 'GitHub' },
+    ],
+  },
+  {
+    slug: '~/projects/bluesky-sentiment-analyser',
+    title: 'Bluesky Sentiment Analyser',
+    plain:
+      'Analyses posts from the Bluesky social network, searched by topic or by user, to measure how positive or negative the conversation is.',
+    technical: 'Python · NLP · Bluesky API',
+    links: [{ href: 'https://github.com/Mozochi/bluesky-sentiment-analyser', label: 'GitHub' }],
+  },
+  {
+    slug: '~/projects/medmcqa-llm-baseline',
+    title: 'MedMCQA LLM Baseline',
+    plain:
+      'Benchmarks how well large language models answer medical exam questions, establishing a baseline for further research.',
+    technical: 'Python · LLM evaluation · FLAN-T5 fine-tuning, Mistral inference',
+    links: [{ href: 'https://github.com/Mozochi/medmcqa-llm-baseline', label: 'GitHub' }],
+  },
+];
+---
+
+<section id="projects" class="wrap">
+  <div class="section-head">
+    <span class="index" aria-hidden="true">01</span>
+    <h2>Projects</h2>
+  </div>
+
+  <ol class="project-list" role="list">
+    {
+      projects.map((project) => (
+        <li class="project">
+          <p class="mono slug">{project.slug}</p>
+          <div class="title-row">
+            <h3>{project.title}</h3>
+            {project.status && <span class="tag">{project.status}</span>}
+          </div>
+          <p class="plain">{project.plain}</p>
+          <p class="mono technical">{project.technical}</p>
+          <div class="links">
+            {project.links.map((link) => (
+              <a class={link.primary ? 'btn btn--primary' : 'btn'} href={link.href}>
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .project-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .project {
+    padding-block: 2.25rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .project:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .slug {
+    margin-bottom: 0.6rem;
+  }
+
+  .title-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  h3 {
+    font-size: 1.45rem;
+  }
+
+  .plain {
+    margin-top: 0.75rem;
+  }
+
+  .technical {
+    margin-top: 0.75rem;
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.25rem;
+  }
+</style>
